@@ -1,5 +1,8 @@
 class ImagesList {
-  constructor({ source, parentElSelector = ".images-list-placeholder" }) {
+  constructor({
+    source = [],
+    parentElSelector = ".images-list-placeholder"
+  } = {}) {
     this.parentEl = document.querySelector(parentElSelector);
     this.source = source;
     this.init();
@@ -16,8 +19,9 @@ class ImagesList {
     this.reRender();
   }
 
-  reRender(){
-    this.parentEl.innerHTML ='';
+  reRender() {
+    this.parentEl.innerHTML = "";
+    
     this.render();
   }
 
@@ -28,5 +32,6 @@ class ImagesList {
       listEl.appendChild(image.render());
     });
     this.parentEl.appendChild(listEl);
+
   }
 }

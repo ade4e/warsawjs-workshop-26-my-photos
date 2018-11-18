@@ -4,25 +4,25 @@ class FileForm {
   }
 
   bindEvent() {
-   document.querySelector("#fileForm").addEventListener("submit", e => {
-     e.preventDefault();
-     let formData = new FormData(e.target);
-     const fR = new FileReader();
+    document.querySelector("#fileForm").addEventListener("submit", e => {
+      e.preventDefault();
+      let formData = new FormData(e.target);
+      const fR = new FileReader();
 
-     fR.addEventListener("load", function(e) {
-       let image = {
-         author: formData.get("author"),
-         title: formData.get("title"),
-         published: new Date().toString(),
-         url: e.target.result
-       };
+      fR.addEventListener("load", function(e) {
+        let image = {
+          author: formData.get("author"),
+          title: formData.get("title"),
+          published: new Date().toString(),
+          url: e.target.result
+        };
 
-       imagesList.addImage(new ImageClass(image));
-     });
+        imagesList.addImage(new ImageClass(image));
+      });
 
-     fR.readAsDataURL(formData.get("imageSrc"));
-   });
- }
+      fR.readAsDataURL(formData.get("imageSrc"));
+    });
+  }
 
   render() {
     let tempParent = document.createElement("div");
